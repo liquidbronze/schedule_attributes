@@ -127,7 +127,7 @@ module ScheduleAttributes
       return date_input unless @params[:start_time].present?
       return nil if @params[:all_day]
       return nil unless @params[:end_time].present?
-      parse_date_time(date_input, @params[:end_time]) < start_time ? (Time.parse(date_input) + 1.day).to_s : date_input
+      parse_date_time(date_input, @params[:end_time]) < start_time ? (Time.parse(date_input) + 1.day).strftime('%Y-%m-%d') : date_input
     end
 
     def start_date

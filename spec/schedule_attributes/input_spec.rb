@@ -82,29 +82,13 @@ describe ScheduleAttributes::Input do
     context args: {date: '2000-12-31', end_time: '14:00'} do
       it { should == Time.new(2000,12,31,14,0,0) }
     end
-  end
 
-  describe "#end_time_date" do
-    subject(:end_time) { input.end_time }
-
-    context args: {} do
-      it { should be nil }
+    context args: {start_date: '2000-06-06', end_date: '2000-12-31', start_time: '06:00', end_time: '14:00'} do
+      it { should == Time.new(2000,6,6,14,0,0) }
     end
 
-    context args: {start_time: '14:00'} do
-      it { should be nil }
-    end
-
-    context args: {end_time: '14:00'} do
-      it { should == Date.today.to_time + 14.hours }
-    end
-
-    context args: {start_time: '6:00', end_time: '14:00', date: '2000-12-31'} do
-      it { should == Time.new(2000,12,31,0,0,0) }
-    end
-
-    context args: {start_time: '20:00', end_time: '14:00', date: '2000-12-31' } do
-      it { should == Time.new(2001,01,01,0,0,0) }
+    context args: {start_date: '2000-06-06', end_date: '2000-12-31', start_time: '20:00', end_time: '14:00'} do
+      it { should == Time.new(2000,6,7,14,0,0) }
     end
   end
 
