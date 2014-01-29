@@ -40,6 +40,17 @@ describe DefaultScheduledActiveRecordModel do
       end
       model.schedule.should == expected
     end
+
+    it "should deal with all_occurrences with no infinite loops" do
+      model.schedule_attributes = {
+        repeat: 1, interval: 7, interval_unit: "day",
+        start_date: "11/03/2000", end_date: "11/04/2000",
+        all_day: true
+      }
+      # Comment out the following puts and you'll see the test hanging.
+      # puts model.schedule_attributes
+      model.schedule.all_occurrences.size.should == 5
+    end
   end
 
 end
