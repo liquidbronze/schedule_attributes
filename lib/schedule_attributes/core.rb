@@ -106,7 +106,8 @@ module ScheduleAttributes
           atts[:ends] = 'never'
         end
 
-        if months = rule.validations_for(:month_of_year).map(&:month)
+        months = rule.validations_for(:month_of_year).map(&:month)
+        if months.present?
           atts[:yearly_start_month] = months.first
           atts[:yearly_end_month] = months.last
 
@@ -127,7 +128,8 @@ module ScheduleAttributes
               end
             end
           end
-
+        else
+          rule.replace_validations_for(:month_of_year, nil)
         end
       else
         atts[:repeat]     = 0
