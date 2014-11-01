@@ -4,10 +4,7 @@ require 'schedule_attributes/active_record'
 class ActiveRecord::Base
   extend ScheduleAttributes::ActiveRecord::Sugar
 
-  establish_connection(
-    adapter: "sqlite3",
-    database: ":memory:"
-  )
+  establish_connection( adapter: "sqlite3", database: ":memory:" )
 end
 
 ActiveRecord::Migration.create_table :calendars do |t|

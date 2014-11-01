@@ -40,6 +40,21 @@ describe DefaultScheduledActiveRecordModel do
       end
       model.schedule.should == expected
     end
+
+    it "should deal with all_occurrences with no infinite loops" do
+      model.schedule_attributes = {
+        repeat: 1, interval: 7, interval_unit: "day",
+        start_date: "11/03/2000", end_date: "11/04/2000",
+        all_day: true
+      }
+      schedule = model.schedule
+
+      # Calling schedule_attributes should not change Schedule::Rule.
+      model.schedule_attributes
+
+      model.schedule.should == schedule
+      model.schedule.all_occurrences.size.should == 5
+    end
   end
 
 end
