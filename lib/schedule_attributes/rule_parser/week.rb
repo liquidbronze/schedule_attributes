@@ -10,7 +10,7 @@ module ScheduleAttributes::RuleParser
     # @return [IceCube::Rule]
     #
     def parse_options
-      @rule = IceCube::Rule.weekly(input.interval)
+      @rule = IceCube::Rule.weekly(input.interval, input.week_start_day)
       @rule.day(*input.weekdays) unless input.weekdays.empty?
     end
 

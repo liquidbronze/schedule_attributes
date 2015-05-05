@@ -74,6 +74,10 @@ module ScheduleAttributes
         IceCube::TimeUtil::DAYS.keys.select { |day| @params[day].to_i == 1 }
       end
 
+      def week_start_day
+        @params[:week_start_day]
+      end
+
       private
 
       def date_input
