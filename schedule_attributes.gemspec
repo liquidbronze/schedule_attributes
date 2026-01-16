@@ -6,9 +6,9 @@ Gem::Specification.new do |s|
   s.name        = "schedule_attributes"
   s.version     = ScheduleAttributes::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Andrew Vit", "Mike Nicholaides"]
-  s.email       = ["andrew@avit.ca", "mike@ablegray.com"]
-  s.homepage    = "https://github.com/avit/schedule_attributes"
+  s.authors     = ["Scheduling Developers"]
+  s.email       = ["scheduling.developer@civica.co.uk"]
+  s.homepage    = "https://github.com/civica/hac-schedule_attributes"
   s.summary     = %q{Handle form inputs for IceCube schedules}
   s.description = %q{Converts to/from date & time inputs for managing scheduled models.}
 
